@@ -1,3 +1,4 @@
+target/
 .idea/
 dump.rdb
 atlassian-ide-plugin.xml

@@ -1,6 +1,7 @@
-hello/Location.class
 hello/Greeting.class
 hello/Incident.class
-hello/Application.class
 hello/IncidentController.class
+hello/ServletInitializer.class
+hello/Location.class
+hello/Application.class
 hello/GreetingController.class
