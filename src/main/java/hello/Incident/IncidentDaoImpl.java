@@ -1,4 +1,4 @@
-package hello.Incident;
+package hello.incident;
 
 import java.util.List;
 
@@ -24,16 +24,16 @@ public class IncidentDaoImpl implements IncidentDao {
 	@Override
 	public Incident findByIncidentId(long incidentId) {
 		Session session = this.sessionFactory.openSession();
-		Incident incident = (Incident) session.createQuery("from Incident in where in.id = :id")
+		Incident incident = (Incident) session.createQuery("from incident in where in.id = :id")
 				.setParameter("id", incidentId).list().get(0);
 		return incident;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Incident> findIncidents(long latitude, long longitude) {
+	public List<Incident> findIncidents(String latitude, String longitude) {
 		Session session = this.sessionFactory.openSession();
-		List<Incident> incidentList = session.createQuery("from Incident").list();
+		List<Incident> incidentList = session.createQuery("from incident").list();
 		session.close();
 		return incidentList;
 	}

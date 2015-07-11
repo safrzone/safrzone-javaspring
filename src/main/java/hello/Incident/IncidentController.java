@@ -1,4 +1,4 @@
-package hello.Incident;
+package hello.incident;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,7 +18,7 @@ public class IncidentController {
 	public Incident createIncident(@RequestParam String assaultType,
 	                               @RequestParam Date date,
 	                               @RequestParam Location location){
-		Incident incident = new Incident(counter.incrementAndGet(),assaultType, date, location );
+		Incident incident = new Incident(assaultType, date, location );
 		return incident;
 	}
 
@@ -28,8 +28,8 @@ public class IncidentController {
 	                                   @RequestParam String latitude,
 	                                   @RequestParam long radius,
 	                                   @RequestParam int timeinterval) {
-		Incident incident1 = new Incident(counter.incrementAndGet(),"Hima", new Date(), new Location());
-		Incident incident2 = new Incident(counter.incrementAndGet(),"Latha", new Date(), new Location());
+		Incident incident1 = new Incident("Hima", new Date(), new Location());
+		Incident incident2 = new Incident("Latha", new Date(), new Location());
 		List<Incident> incidents = new ArrayList<>();
 		incidents.add(incident1);
 		incidents.add(incident2);

@@ -1,4 +1,4 @@
-package hello.Incident;
+package hello.incident;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,8 +17,8 @@ public class Location{
 	protected long id;
 
 	@Getter @Setter
-	private String latitude;
+	protected String latitude;
 
 	@Getter @Setter
-	private String longitude;
+	protected String longitude;
 }

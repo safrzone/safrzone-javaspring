@@ -1,4 +1,4 @@
-package hello.Incident;
+package hello.incident;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -30,8 +30,7 @@ public class Incident implements Serializable {
 	@JoinColumn(name="locationId")
 	private Location location;
 
-	public Incident(long id, String incidentType, Date date, Location location) {
-		this.id = id;
+	public Incident(String incidentType, Date date, Location location) {
 		this.incidentType = incidentType;
 		this.date = date;
 		this.location = location;

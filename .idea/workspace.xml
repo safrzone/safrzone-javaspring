@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85f82b52-4be2-4d69-81ce-f867cae29c7c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/hello/SpringHibernateMain.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/spring.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="gs-rest-service.iws" />
@@ -584,7 +582,13 @@
       <option name="project" value="LOCAL" />
       <updated>1436577635829</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added hibernate models and integrated it with spring&#10;">
+      <created>1436641590410</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1436641590410</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -635,7 +639,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Working greeting and incident&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working greeting and incident&#10;" />
+    <MESSAGE value="Added hibernate models and integrated it with spring&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added hibernate models and integrated it with spring&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
