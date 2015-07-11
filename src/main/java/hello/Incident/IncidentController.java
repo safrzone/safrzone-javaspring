@@ -15,10 +15,10 @@ public class IncidentController {
 	private final AtomicLong counter = new AtomicLong();
 
 	@RequestMapping(value = {"/incident"}, method= RequestMethod.POST)
-	public Incident createIncident(@RequestParam String assaultType,
+	public Incident createIncident(@RequestParam String incidentType,
 	                               @RequestParam Date date,
 	                               @RequestParam Location location){
-		Incident incident = new Incident(assaultType, date, location );
+		Incident incident = new Incident(incidentType, date, location );
 		return incident;
 	}
 

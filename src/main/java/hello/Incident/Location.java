@@ -1,5 +1,6 @@
 package hello.incident;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +10,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class Location{
+public class Location implements Serializable {
+	private static final long serialVersionUID = -7113435006229283852L;
 
 	@Getter @Setter
 	@Id

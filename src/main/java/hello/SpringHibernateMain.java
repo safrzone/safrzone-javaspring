@@ -26,7 +26,7 @@ public class SpringHibernateMain {
 
 		List<Incident> incidents = incidentDao.findIncidents("343", "2424");
 
-		incidents.forEach(incidentInfo -> System.out.println(incident.getId()));
+		incidents.forEach(incidentInfo -> System.out.println(incidentInfo.getId()));
 
 		context.close();
 	}

@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +31,9 @@ public class Incident implements Serializable {
 	private Date date;
 
 	@Getter @Setter
+	@OneToOne
 	@JoinColumn(name="locationId")
+	@Cascade(CascadeType.ALL)
 	private Location location;
 
 	public Incident(String incidentType, Date date, Location location) {
@@ -35,4 +41,6 @@ public class Incident implements Serializable {
 		this.date = date;
 		this.location = location;
 	}
+
+	public Incident(){}
 }

@@ -33,7 +33,7 @@ public class IncidentDaoImpl implements IncidentDao {
 	@Override
 	public List<Incident> findIncidents(String latitude, String longitude) {
 		Session session = this.sessionFactory.openSession();
-		List<Incident> incidentList = session.createQuery("from incident").list();
+		List<Incident> incidentList = session.createQuery("from Incident").list();
 		session.close();
 		return incidentList;
 	}

@@ -34,9 +34,9 @@
     </bean>
 
     <bean id="IncidentDao" class="hello.incident.IncidentDaoImpl">
-        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
-    <bean id="LocationDao" class="hello.incident.locationDaoImpl">
-        <property name="sessionFactory" ref="hibernate3AnnotatedSessionFactory" />
+    <bean id="LocationDao" class="hello.incident.LocationDaoImpl">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </bean>
 </beans>
