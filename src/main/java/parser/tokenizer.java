@@ -5,15 +5,15 @@ import java.util.StringTokenizer;
 
 public class Tokenizer {
 	/* Example tokens to tokenize:
-		I saw a guy get mugged at/near Civic Center Bart Station. Time: <time>
-		I got attacked by a guy in Tenderloin. Time: <time>
-		My friend was sexually assaulted at the Hogwash College Campus. Time: <time>
+		I saw a guy get mugged at/near Civic Center Bart Station. Time:<time>
+		I got attacked by a guy in Tenderloin. Time:<time>
+		My friend was sexually assaulted at the Hogwash College Campus. Time:<time>
 
-		Who: before "get", "got", "was"
 		Assault Type: followed by "get", "got", "was"
 		Place: followed by "at", "near", "in"
-		Time: followed by "time:"
+		Time: followed by "Time:"
 	*/
+	public static String timeToken = "Time:";
 	public static Map<String, String> tokenizeIncident(String incidentText) {
 		// Keys: type, poi, time
 		Map<String, String> incidentMetadata = new HashMap<String, String>();  
@@ -36,7 +36,7 @@ public class Tokenizer {
 	}
   
 	// Looking for the token "Time:"
-		public static String getTime(String text) {
+	public static String getTime(String text) {
 		String regEx = timeToken;
 		String[] res = text.split(regEx);
 		int size = res.length;
