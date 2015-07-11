@@ -1,0 +1,10 @@
+.idea/
+dump.rdb
+atlassian-ide-plugin.xml
+.cache
+schema.sql
+jetty-logback.log
+.DS_Store
+*.sw[op]
+/target/
+*~
