@@ -3,6 +3,7 @@ hello/incident/IncidentController.class
 hello/incident/LocationDaoImpl.class
 hello/incident/IncidentDao.class
 hello/ServletInitializer.class
+hello/config/DatabaseConfig.class
 hello/SpringHibernateMain.class
 hello/incident/IncidentDaoImpl.class
 hello/incident/Incident.class

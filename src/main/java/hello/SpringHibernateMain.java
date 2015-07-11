@@ -16,8 +16,8 @@ public class SpringHibernateMain {
 		IncidentDao incidentDao = context.getBean(IncidentDao.class);
 
 		Location location = new Location();
-		location.setLatitude("3242");
-		location.setLongitude("23423");
+		location.setLatitude("244");
+		location.setLongitude("5677");
 		Incident incident = new Incident("rape", new Date(), location);
 
 		incidentDao.save(incident);
