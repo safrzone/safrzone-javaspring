@@ -30,6 +30,11 @@ public class IncidentController {
 	final String TWITTER="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 	final String FACEBOOK="yyyy-MM-dd'T'HH:mm:ss+SSSS";
 
+	@RequestMapping(value = {"/deleteIncidents"}, method= RequestMethod.POST)
+	public void deleteIncidents() {
+		incidentDao.deleteAll();
+	}
+
 	@RequestMapping(value = {"/incident"}, method= RequestMethod.POST)
 	public Incident createIncident(@RequestParam(required=false) String incidentDetail,
 			                       @RequestParam(required=false) String incidentType,

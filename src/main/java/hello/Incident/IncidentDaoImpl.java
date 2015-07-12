@@ -62,4 +62,9 @@ public class IncidentDaoImpl implements IncidentDao {
 		List<Incident> incidentList = entityManager.createQuery("from Incident where ").getResultList();
 		return incidentList;
 	}
+
+	@Override
+	public void deleteAll() {
+		entityManager.createQuery("delete from Incident").executeUpdate();
+	}
 }

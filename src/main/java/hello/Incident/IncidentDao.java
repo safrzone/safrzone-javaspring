@@ -17,4 +17,6 @@ public interface IncidentDao {
 	                                                   String radius,
 	                                                   Date startDate,
 	                                                   Date endDate);
+
+	public void deleteAll();
 }
