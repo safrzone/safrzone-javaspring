@@ -4,12 +4,13 @@
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/incident/Incident.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/incident/LocationDao.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/Application.java
-/Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/subscription/subscriptionManager.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/GreetingController.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/incident/LocationDaoImpl.java
+/Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/subscription/SubscriptionManager.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/incident/IncidentDao.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/Greeting.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/incident/IncidentController.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/SpringHibernateMain.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/config/DatabaseConfig.java
 /Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/incident/IncidentDaoImpl.java
+/Users/hima/SafrZone/safrzone-javaspring/src/main/java/hello/subscription/SubscriptionController.java

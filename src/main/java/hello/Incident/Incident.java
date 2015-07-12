@@ -58,9 +58,6 @@ public class Incident implements Serializable {
 		this.incidentType = incidentType;
 		this.src = src;
 		this.date = date;
-		if(imageUrl!=null) {
-			this.imageUrl = imageUrl;
-		} else {
 			try {
 				String basePath = new File("").getAbsolutePath();
 				System.out.println(basePath);
@@ -68,7 +65,6 @@ public class Incident implements Serializable {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-		}
 		if(landmark!=null) {
 			this.landmark = landmark;
 			GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyAo-mr0uF06CbnYKPZCgCjG27EYvju7ffw");

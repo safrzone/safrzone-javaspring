@@ -1,7 +1,7 @@
 hello/Greeting.class
 hello/incident/IncidentController.class
 hello/incident/LocationDaoImpl.class
-hello/subscription/subscriptionManager.class
+hello/subscription/SubscriptionController.class
 hello/incident/IncidentDao.class
 hello/ServletInitializer.class
 hello/config/DatabaseConfig.class
@@ -12,5 +12,6 @@ hello/incident/Location.class
 hello/incident/LocationDao.class
 hello/Application.class
 hello/GreetingController.class
+hello/subscription/SubscriptionManager.class
 hello/parser/Tokenizer$InputFields.class
 hello/parser/Tokenizer.class
