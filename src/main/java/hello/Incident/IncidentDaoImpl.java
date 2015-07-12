@@ -1,5 +1,6 @@
 package hello.incident;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -53,5 +54,12 @@ public class IncidentDaoImpl implements IncidentDao {
 		System.out.println(longitude);
 
 		return findIncidentsAroundLocation(latitude, longitude, radius, timeInterval);
+	}
+
+	@Override
+	public List<Incident> findIncidentsForSubscription(String latitude, String longitude,
+	                                                   String radius, Date startDate, Date endDate) {
+		List<Incident> incidentList = entityManager.createQuery("from Incident where ").getResultList();
+		return incidentList;
 	}
 }

@@ -20,7 +20,8 @@ public class SpringHibernateMain {
 		location.setLongitude("5677");
 		String landmark = "ATTPark, San Francisco";
 		String imageUrl = "http://sdfs";
-		Incident incident = new Incident("rape", new Date(), location, landmark, imageUrl);
+		String src = "twitter";
+		Incident incident = new Incident("rape", new Date(), location, landmark, imageUrl, src);
 
 		incidentDao.save(incident);
 

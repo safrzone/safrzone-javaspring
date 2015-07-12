@@ -34,7 +34,8 @@ public class IncidentController {
 	                               @RequestParam(required=false) String date,
 	                               Location location,
 	                               @RequestParam(required = false) String landmark,
-	                               @RequestParam(required = false) String imageUrl) {
+	                               @RequestParam(required = false) String imageUrl,
+			                       @RequestParam(required = false) String src) {
 		Map<InputFields, String> incidentInfo;
 		String dateInText = null;
 		if(incidentDetail!=null) {
@@ -58,7 +59,7 @@ public class IncidentController {
 		}
 		System.out.println(javaDate.toString());
 		Incident incident = new Incident(incidentType, javaDate,
-				location, landmark, imageUrl);
+				location, landmark, imageUrl, src);
 		incidentDao.save(incident);
 		return incident;
 	}

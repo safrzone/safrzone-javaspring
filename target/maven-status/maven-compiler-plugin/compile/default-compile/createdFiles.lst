@@ -1,6 +1,7 @@
 hello/Greeting.class
 hello/incident/IncidentController.class
 hello/incident/LocationDaoImpl.class
+hello/subscription/subscriptionManager.class
 hello/incident/IncidentDao.class
 hello/ServletInitializer.class
 hello/config/DatabaseConfig.class

@@ -1,7 +1,11 @@
 package hello.incident;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Random;
+import java.util.Scanner;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -46,10 +50,25 @@ public class Incident implements Serializable {
 	@Getter @Setter
 	private String imageUrl;
 
+	@Getter @Setter
+	private String src;
+
 	public Incident(String incidentType, Date date, Location location, String landmark,
-	                String imageUrl) {
+	                String imageUrl, String src) {
 		this.incidentType = incidentType;
+		this.src = src;
 		this.date = date;
+		if(imageUrl!=null) {
+			this.imageUrl = imageUrl;
+		} else {
+			try {
+				String basePath = new File("").getAbsolutePath();
+				System.out.println(basePath);
+				this.imageUrl = choose(new File("src/main/resources/imageUrls.txt"));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 		if(landmark!=null) {
 			this.landmark = landmark;
 			GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyAo-mr0uF06CbnYKPZCgCjG27EYvju7ffw");
@@ -66,15 +85,27 @@ public class Incident implements Serializable {
 				location1.setLongitude(longitude);
 				this.location = location1;
 			} catch (Exception e) {
-				this.imageUrl = imageUrl;
 				this.location = null;
 			}
 		} else {
 			this.location = location;
 		}
-		if(imageUrl!=null) {
-			this.imageUrl = imageUrl;
+	}
+
+	public static String choose(File f) throws FileNotFoundException
+	{
+		String result = null;
+		Random rand = new Random();
+		int n = 0;
+		for(Scanner sc = new Scanner(f); sc.hasNext(); )
+		{
+			++n;
+			String line = sc.nextLine();
+			if(rand.nextInt(n) == 0)
+				result = line;
 		}
+
+		return result;
 	}
 
 	public Incident(){}

@@ -1,5 +1,6 @@
 package hello.incident;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IncidentDao {
@@ -11,4 +12,9 @@ public interface IncidentDao {
 	                                                  int timeInterval);
 	public List<Incident> findIncidentsAroundLandmark(String landmark, String radius,
 	                                                  int timeInterval) throws Exception;
+	public List<Incident> findIncidentsForSubscription(String latitude,
+	                                                   String longitude,
+	                                                   String radius,
+	                                                   Date startDate,
+	                                                   Date endDate);
 }
