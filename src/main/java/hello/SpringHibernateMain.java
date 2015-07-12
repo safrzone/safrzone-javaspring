@@ -18,13 +18,16 @@ public class SpringHibernateMain {
 		Location location = new Location();
 		location.setLatitude("244");
 		location.setLongitude("5677");
-		Incident incident = new Incident("rape", new Date(), location);
+		String landmark = "ATTPark, San Francisco";
+		String imageUrl = "http://sdfs";
+		Incident incident = new Incident("rape", new Date(), location, landmark, imageUrl);
 
 		incidentDao.save(incident);
 
 		System.out.println("Incident::"+incident);
 
-		List<Incident> incidents = incidentDao.findIncidents("343", "2424");
+		List<Incident> incidents = incidentDao.findIncidentsAroundLocation("343", "2424",
+				"2342", 13);
 
 		incidents.forEach(incidentInfo -> System.out.println(incidentInfo.getId()));
 

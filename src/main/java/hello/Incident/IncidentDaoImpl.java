@@ -21,15 +21,27 @@ public class IncidentDaoImpl implements IncidentDao {
 
 	@Override
 	public Incident findByIncidentId(long incidentId) {
-		Incident incident = (Incident) entityManager.createQuery("from incident in where in.id = :id")
-				.setParameter("id", incidentId).getResultList().get(0);
+		Incident incident = (Incident) entityManager.createQuery("from Incident where id = :incidentId")
+				.setParameter("incidentId", incidentId).getResultList().get(0);
 		return incident;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Incident> findIncidents(String latitude, String longitude) {
+	public List<Incident> findIncidentsAroundLocation(String latitude, String longitude,
+	                                                  String radius,
+	                                                  int timeInterval) {
 		List<Incident> incidentList = entityManager.createQuery("from Incident").getResultList();
+		return incidentList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Incident> findIncidentsAroundLandmark(String landmark, String radius,
+	                                                  int timeInterval) {
+		List<Incident> incidentList = entityManager.createQuery("from Incident where landmark = :landmark")
+				.setParameter("landmark", landmark)
+				.getResultList();
 		return incidentList;
 	}
 }

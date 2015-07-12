@@ -36,10 +36,23 @@ public class Incident implements Serializable {
 	@Cascade(CascadeType.ALL)
 	private Location location;
 
-	public Incident(String incidentType, Date date, Location location) {
+	@Getter @Setter
+	private String landmark;
+
+	@Getter @Setter
+	private String imageUrl;
+
+	public Incident(String incidentType, Date date, Location location, String landmark,
+	                String imageUrl) {
 		this.incidentType = incidentType;
 		this.date = date;
 		this.location = location;
+		if(landmark!=null) {
+			this.landmark = landmark;
+		}
+		if(imageUrl!=null) {
+			this.imageUrl = imageUrl;
+		}
 	}
 
 	public Incident(){}
