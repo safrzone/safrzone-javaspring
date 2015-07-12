@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hello.TwitterClient;
 import hello.parser.Tokenizer;
 import hello.parser.Tokenizer.InputFields;
+import twitter4j.TwitterException;
 
 @RestController
 public class IncidentController {
@@ -35,7 +37,9 @@ public class IncidentController {
 	                               Location location,
 	                               @RequestParam(required = false) String landmark,
 	                               @RequestParam(required = false) String imageUrl,
-			                       @RequestParam(required = false) String src) {
+			                       @RequestParam(required = false) String src,
+			                       @RequestParam(required = false) Long tweetId,
+			                       @RequestParam(required = false) String userName) {
 		Map<InputFields, String> incidentInfo;
 		String dateInText = null;
 		if(incidentDetail!=null) {
@@ -61,6 +65,15 @@ public class IncidentController {
 		Incident incident = new Incident(incidentType, javaDate,
 				location, landmark, imageUrl, src);
 		incidentDao.save(incident);
+
+		TwitterClient twitterClient = new TwitterClient();
+		try {
+			if(src.equals("twitter")) {
+				twitterClient.updateStatus(userName, landmark, tweetId);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return incident;
 	}
 

@@ -11,6 +11,7 @@ hello/incident/Incident.class
 hello/incident/Location.class
 hello/incident/LocationDao.class
 hello/Application.class
+hello/TwitterClient.class
 hello/GreetingController.class
 hello/subscription/SubscriptionManager.class
 hello/parser/Tokenizer$InputFields.class
