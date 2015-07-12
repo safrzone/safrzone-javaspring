@@ -2,8 +2,10 @@ package hello.incident;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -14,27 +16,45 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import hello.parser.Tokenizer;
+import hello.parser.Tokenizer.InputFields;
+
 @RestController
 public class IncidentController {
 	@Autowired private IncidentDao incidentDao;
+	@Autowired private Tokenizer tokenizer;
 
 	private final AtomicLong counter = new AtomicLong();
 	final String TWITTER="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 	final String FACEBOOK="yyyy-MM-dd'T'HH:mm:ss+SSSS";
 
 	@RequestMapping(value = {"/incident"}, method= RequestMethod.POST)
-	public Incident createIncident(@RequestParam String incidentType,
-	                               @RequestParam String date,
+	public Incident createIncident(@RequestParam(required=false) String incidentDetail,
+			                       @RequestParam(required=false) String incidentType,
+	                               @RequestParam(required=false) String date,
 	                               Location location,
 	                               @RequestParam(required = false) String landmark,
 	                               @RequestParam(required = false) String imageUrl) {
+		Map<InputFields, String> incidentInfo;
+		String dateInText = null;
+		if(incidentDetail!=null) {
+			incidentInfo = tokenizer.tokenizeIncident(incidentDetail);
+			incidentType = incidentInfo.get(InputFields.TYPE);
+			dateInText = incidentInfo.get(InputFields.TIME);
+			landmark = incidentInfo.get(InputFields.POI);
+		}
+
 		Date javaDate;
-		if(getJavaDateForTwitterFormat(date).isPresent()) {
-			javaDate = getJavaDateForTwitterFormat(date).get();
-		} else if(getJavaDateForFacebookFormat(date).isPresent()) {
-			javaDate = getJavaDateForFacebookFormat(date).get();
+		if(dateInText == null) {
+			if (getJavaDateForTwitterFormat(date).isPresent()) {
+				javaDate = getJavaDateForTwitterFormat(date).get();
+			} else if (getJavaDateForFacebookFormat(date).isPresent()) {
+				javaDate = getJavaDateForFacebookFormat(date).get();
+			} else {
+				javaDate = new Date(date);
+			}
 		} else {
-			javaDate = new Date(date);
+			javaDate = new Date(dateInText);
 		}
 		System.out.println(javaDate.toString());
 		Incident incident = new Incident(incidentType, javaDate,
@@ -43,14 +63,19 @@ public class IncidentController {
 		return incident;
 	}
 
-	@RequestMapping(value = "/getIncidents/", method=RequestMethod.GET, params = { "longitude",
-			"latitude", "radius", "timeinterval"})
-	public List<Incident> getIncidents(@RequestParam String longitude,
-	                                   @RequestParam String latitude,
+	@RequestMapping(value = "/getIncidents/", method=RequestMethod.GET)
+	public List<Incident> getIncidents(@RequestParam(required = false) String longitude,
+	                                   @RequestParam(required = false) String latitude,
 	                                   @RequestParam String radius,
-	                                   @RequestParam int timeinterval) {
-		List<Incident> incidents = incidentDao.findIncidentsAroundLocation(latitude,
-				longitude, radius, timeinterval);
+	                                   @RequestParam int timeinterval,
+	                                   @RequestParam(required = false) String landmark) throws Exception {
+		List<Incident> incidents = new ArrayList<>();
+		if(latitude !=null && longitude !=null) {
+			incidents = incidentDao.findIncidentsAroundLocation(latitude,
+					longitude, radius, timeinterval);
+		} else if(landmark != null) {
+			incidents = incidentDao.findIncidentsAroundLandmark(landmark, radius, timeinterval);
+		}
 		return incidents;
 	}
 

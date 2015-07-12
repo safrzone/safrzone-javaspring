@@ -11,3 +11,5 @@ hello/incident/Location.class
 hello/incident/LocationDao.class
 hello/Application.class
 hello/GreetingController.class
+hello/parser/Tokenizer$InputFields.class
+hello/parser/Tokenizer.class

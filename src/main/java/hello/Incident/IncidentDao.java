@@ -10,5 +10,5 @@ public interface IncidentDao {
 	                                                  String radius,
 	                                                  int timeInterval);
 	public List<Incident> findIncidentsAroundLandmark(String landmark, String radius,
-	                                                  int timeInterval);
+	                                                  int timeInterval) throws Exception;
 }

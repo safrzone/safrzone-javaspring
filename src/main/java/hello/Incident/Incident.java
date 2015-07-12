@@ -12,6 +12,10 @@ import javax.persistence.OneToOne;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.model.GeocodingResult;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,9 +50,27 @@ public class Incident implements Serializable {
 	                String imageUrl) {
 		this.incidentType = incidentType;
 		this.date = date;
-		this.location = location;
 		if(landmark!=null) {
 			this.landmark = landmark;
+			GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyAo-mr0uF06CbnYKPZCgCjG27EYvju7ffw");
+			try {
+				GeocodingResult[] results = GeocodingApi.geocode(context,
+						landmark).await();
+				System.out.println(results[0].formattedAddress);
+				String latitude = String.valueOf(results[0].geometry.location.lat);
+				String longitude = String.valueOf(results[0].geometry.location.lng);
+				System.out.println(latitude);
+				System.out.println(longitude);
+				Location location1 = new Location();
+				location1.setLatitude(latitude);
+				location1.setLongitude(longitude);
+				this.location = location1;
+			} catch (Exception e) {
+				this.imageUrl = imageUrl;
+				this.location = null;
+			}
+		} else {
+			this.location = location;
 		}
 		if(imageUrl!=null) {
 			this.imageUrl = imageUrl;
