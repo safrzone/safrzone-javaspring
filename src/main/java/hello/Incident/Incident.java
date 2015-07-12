@@ -22,6 +22,7 @@ import com.google.maps.model.GeocodingResult;
 
 import lombok.Getter;
 import lombok.Setter;
+import static java.lang.String.format;
 
 @Entity
 public class Incident implements Serializable {
@@ -58,13 +59,15 @@ public class Incident implements Serializable {
 		this.incidentType = incidentType;
 		this.src = src;
 		this.date = date;
-			try {
-				String basePath = new File("").getAbsolutePath();
-				System.out.println(basePath);
-				this.imageUrl = choose(new File("src/main/resources/imageUrls.txt"));
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+				String[] imageUrls = new String[]
+						{"http://blog.datingwise.com/wp-content/uploads/2010/04/man-woman-300x211.jpg",
+						"http://farm4.staticflickr.com/3332/3493810475_e76a89e154_z.jpg",
+						"http://www.bromsgroveglazingrepairs.co.uk/wp-content/uploads/2012/06/BromsgroveShopFrontWindowBroken.jpg",
+						"http://www.cochranfirmdc.com/wp-content/uploads/2013/12/apple-store-bethesda-glass-door-broken-pelvis-lawyer.jpg",
+						"http://www.laval-ambulances.fr/img/ambulances.jpg",
+						"http://farm4.staticflickr.com/3696/9355136130_d8fd538c09_z.jpg",
+								"http://www.brooklyneagle.com/sites/default/files/styles/free_style/public/b_LICH_ambulance2_MFrost_6-23-13.jpg?c=806533261199a2bd06a2cd7c81d38c9f"};
+				this.imageUrl = imageUrls[new Random().nextInt(imageUrls.length)];
 		if(landmark!=null) {
 			this.landmark = landmark;
 			GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyAo-mr0uF06CbnYKPZCgCjG27EYvju7ffw");
